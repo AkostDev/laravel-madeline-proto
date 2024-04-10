@@ -16,10 +16,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "danog/madelineproto": "^8",
-        "illuminate/console": "^11.3",
-        "illuminate/database": "^11.3",
-        "illuminate/support": "^11.3"
+        "danog/madelineproto": "^8"
     },
     "autoload": {
         "psr-4": {
