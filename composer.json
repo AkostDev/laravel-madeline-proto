@@ -31,9 +31,6 @@
             "providers": [
                 "AkostDev\\MadelineProto\\MadelineProtoServiceProvider"
             ]
-        },
-        "phabel": {
-            "revision": 0
         }
     },
     "minimum-stability": "beta",
