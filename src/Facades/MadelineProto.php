@@ -1,15 +1,15 @@
 <?php
 
-namespace AkostDev\MadelineProto\Facades;
+namespace AkostDev\LaravelMadelineProto\Facades;
 
 use danog\MadelineProto\API;
-use AkostDev\MadelineProto\TelegramObject;
+use AkostDev\LaravelMadelineProto\TelegramObject;
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Facade for MadelineProto class.
  *
- * @package AkostDev\MadelineProto\Facades
+ * @package AkostDev\LaravelMadelineProto\Facades
  *
  * @method static TelegramObject phoneLogin(string $phone)
  * @method static TelegramObject completePhoneLogin(string $code)
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool logout()
  * @method static bool isLoggedIn()
  *
- * @see \AkostDev\MadelineProto\MadelineProto
+ * @see \AkostDev\LaravelMadelineProto\MadelineProto
  */
 class MadelineProto extends Facade
 {

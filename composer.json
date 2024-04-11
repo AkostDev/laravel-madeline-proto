@@ -16,27 +16,24 @@
     ],
     "require": {
         "php": "^8.2",
-        "danog/madelineproto": "^8",
-        "illuminate/support": "^11.3",
-        "illuminate/console": "^11.3",
-        "illuminate/database": "^11.3"
+        "danog/madelineproto": "^8"
     },
     "autoload": {
         "psr-4": {
-            "AkostDev\\MadelineProto\\": "src/"
+            "AkostDev\\LaravelMadelineProto\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "AkostDev\\MadelineProto\\MadelineProtoServiceProvider"
+                "AkostDev\\LaravelMadelineProto\\MadelineProtoServiceProvider"
             ]
         }
     },
     "minimum-stability": "beta",
     "config": {
         "allow-plugins": {
-            "symfony/thanks": true
+            "symfony/thanks": false
         }
     }
 }

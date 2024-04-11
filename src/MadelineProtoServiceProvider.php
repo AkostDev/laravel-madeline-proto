@@ -1,10 +1,10 @@
 <?php
 
-namespace AkostDev\MadelineProto;
+namespace AkostDev\LaravelMadelineProto;
 
-use AkostDev\MadelineProto\Commands\MultiSessionCommand;
-use AkostDev\MadelineProto\Commands\TelegramAccountLoginCommand;
-use AkostDev\MadelineProto\Factories\MadelineProtoFactory;
+use AkostDev\LaravelMadelineProto\Commands\MultiSessionCommand;
+use AkostDev\LaravelMadelineProto\Commands\TelegramAccountLoginCommand;
+use AkostDev\LaravelMadelineProto\Factories\MadelineProtoFactory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 

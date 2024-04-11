@@ -1,6 +1,6 @@
 <?php
 
-namespace AkostDev\MadelineProto\Exceptions;
+namespace AkostDev\LaravelMadelineProto\Exceptions;
 
 use Exception;
 use Throwable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace AkostDev\MadelineProto;
+namespace AkostDev\LaravelMadelineProto;
 
 use danog\MadelineProto\Namespace\Updates;
 use Illuminate\Contracts\Support\Arrayable;
@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\Arrayable;
 /**
  * Class TelegramObject
  *
- * @package AkostDev\MadelineProto
+ * @package AkostDev\LaravelMadelineProto
  *
  * @property string return_type
  */

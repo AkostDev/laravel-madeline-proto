@@ -1,10 +1,10 @@
 <?php
 
-namespace AkostDev\MadelineProto\Commands;
+namespace AkostDev\LaravelMadelineProto\Commands;
 
-use AkostDev\MadelineProto\Exceptions\NeedTwoFactorAuthException;
-use AkostDev\MadelineProto\Exceptions\SignUpNeededException;
-use AkostDev\MadelineProto\Facades\MadelineProto;
+use AkostDev\LaravelMadelineProto\Exceptions\NeedTwoFactorAuthException;
+use AkostDev\LaravelMadelineProto\Exceptions\SignUpNeededException;
+use AkostDev\LaravelMadelineProto\Facades\MadelineProto;
 use Illuminate\Console\Command;
 
 class TelegramAccountLoginCommand extends Command

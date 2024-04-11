@@ -16,7 +16,7 @@ composer require akostdev/laravel-madeline-proto
 Then publish the `telegram.php` config file:
 
 ```shell script
-php artisan vendor:publish --provider="AkostDev\MadelineProto\MadelineProtoServiceProvider"
+php artisan vendor:publish --provider="AkostDev\LaravelMadelineProto\MadelineProtoServiceProvider"
 ```
 
 Set up the Telegram API key by providing env variables:

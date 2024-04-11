@@ -1,10 +1,13 @@
 <?php
 
-namespace AkostDev\MadelineProto\Factories;
+namespace AkostDev\LaravelMadelineProto\Factories;
 
 use danog\MadelineProto\API;
-use AkostDev\MadelineProto\MadelineProto;
+use AkostDev\LaravelMadelineProto\MadelineProto;
 use danog\MadelineProto\Exception;
+use danog\MadelineProto\Settings;
+use danog\MadelineProto\Settings\AppInfo;
+use danog\MadelineProto\Settings\Logger;
 use Illuminate\Database\Connection;
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
@@ -71,7 +74,22 @@ class MadelineProtoFactory
             $config = config('telegram.settings');
         }
 
-        $client = new API(storage_path("app/telegram/$sessionFile"), $config);
+        $settings = new Settings();
+
+        $appInfoSettings = (new AppInfo())
+            ->setApiId(intval($config['app_info']['api_id']))
+            ->setApiHash($config['app_info']['api_hash']);
+
+        $loggingSettings = (new Logger())
+            ->setType($config['logger']['logger'])
+            ->setExtra($config['logger']['logger_param'])
+            ->setMaxSize(50 * 1024 * 1024);
+
+        $settings
+            ->setAppInfo($appInfoSettings)
+            ->setLogger($loggingSettings);
+
+        $client = new API(storage_path("app/telegram/$sessionFile"), $settings);
 
         return new MadelineProto($client);
     }

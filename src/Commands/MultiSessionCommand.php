@@ -1,6 +1,6 @@
 <?php
 
-namespace AkostDev\MadelineProto\Commands;
+namespace AkostDev\LaravelMadelineProto\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;

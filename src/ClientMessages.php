@@ -1,6 +1,6 @@
 <?php
 
-namespace AkostDev\MadelineProto;
+namespace AkostDev\LaravelMadelineProto;
 
 use danog\MadelineProto\Namespace\Messages;
 

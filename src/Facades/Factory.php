@@ -1,14 +1,14 @@
 <?php
 
-namespace AkostDev\MadelineProto\Facades;
+namespace AkostDev\LaravelMadelineProto\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use AkostDev\MadelineProto\MadelineProto;
+use AkostDev\LaravelMadelineProto\MadelineProto;
 
 /**
  * Facade for MadelineProtoFactory class.
  *
- * @package AkostDev\MadelineProto\Facades
+ * @package AkostDev\LaravelMadelineProto\Facades
  *
  * @method static MadelineProto get(mixed $session, array $config = null)
  * @method static MadelineProto make(string $sessionFile, array $config)

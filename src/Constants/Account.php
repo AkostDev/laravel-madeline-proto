@@ -1,6 +1,6 @@
 <?php
 
-namespace AkostDev\MadelineProto\Constants;
+namespace AkostDev\LaravelMadelineProto\Constants;
 
 class Account
 {

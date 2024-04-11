@@ -1,15 +1,15 @@
 <?php
 
-namespace AkostDev\MadelineProto\Facades;
+namespace AkostDev\LaravelMadelineProto\Facades;
 
-use AkostDev\MadelineProto\ClientMessages;
-use AkostDev\MadelineProto\TelegramObject;
+use AkostDev\LaravelMadelineProto\ClientMessages;
+use AkostDev\LaravelMadelineProto\TelegramObject;
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Facade for ClientMessages class.
  *
- * @package AkostDev\MadelineProto\Facades
+ * @package AkostDev\LaravelMadelineProto\Facades
  *
  * @method static TelegramObject acceptUrlAuth($messageid, int $buttonId = 0, array $extra = [])
  * @method static TelegramObject addChatUser($chatId, $userId = '', int $forwardLimit = 1)

@@ -1,11 +1,11 @@
 <?php
 
-namespace AkostDev\MadelineProto;
+namespace AkostDev\LaravelMadelineProto;
 
 use danog\MadelineProto\API as Client;
-use AkostDev\MadelineProto\Constants\Account;
-use AkostDev\MadelineProto\Exceptions\NeedTwoFactorAuthException;
-use AkostDev\MadelineProto\Exceptions\SignUpNeededException;
+use AkostDev\LaravelMadelineProto\Constants\Account;
+use AkostDev\LaravelMadelineProto\Exceptions\NeedTwoFactorAuthException;
+use AkostDev\LaravelMadelineProto\Exceptions\SignUpNeededException;
 
 class MadelineProto
 {

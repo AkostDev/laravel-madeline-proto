@@ -1,9 +1,9 @@
 <?php
 
-namespace AkostDev\MadelineProto\Exceptions;
+namespace AkostDev\LaravelMadelineProto\Exceptions;
 
 use Exception;
-use AkostDev\MadelineProto\TelegramObject;
+use AkostDev\LaravelMadelineProto\TelegramObject;
 use Throwable;
 
 class NeedTwoFactorAuthException extends Exception
