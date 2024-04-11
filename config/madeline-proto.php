@@ -22,7 +22,7 @@ return [
             'session_file' => env('MP_SESSION_FILE', 'session.madeline'),
         ],
         'multiple' => [
-            'table' => 'mp_telegram_sessions'
+            'table' => 'madeline_proto_sessions'
         ],
     ],
 

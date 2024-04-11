@@ -18,7 +18,7 @@ class MadelineProtoServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton('madeline-proto-factory', function (Application $app) {
-            return new MadelineProtoFactory($app->make('db'), config('telegram.sessions.multiple.table'));
+            return new MadelineProtoFactory($app->make('db'), config('madeline-proto.sessions.multiple.table'));
         });
         $this->app->alias('madeline-proto-factory', MadelineProtoFactory::class);
 
@@ -27,7 +27,7 @@ class MadelineProtoServiceProvider extends ServiceProvider
         $this->app->singleton('madeline-proto', function (Application $app) {
             $sessionFactory = $app->make('madeline-proto-factory');
 
-            return $sessionFactory->make(config('telegram.sessions.single.session_file'), config('telegram.settings'));
+            return $sessionFactory->make(config('madeline-proto.sessions.single.session_file'), config('madeline-proto.settings'));
         });
         $this->app->alias('madeline-proto', MadelineProto::class);
 
@@ -35,8 +35,8 @@ class MadelineProtoServiceProvider extends ServiceProvider
             $sessionFactory = $app->make('madeline-proto-factory');
 
             return $sessionFactory->make(
-                config('telegram.sessions.single.session_file'),
-                config('telegram.settings')
+                config('madeline-proto.sessions.single.session_file'),
+                config('madeline-proto.settings')
             )->messages();
         });
         $this->app->alias('madeline-proto-messages', ClientMessages::class);
@@ -55,7 +55,7 @@ class MadelineProtoServiceProvider extends ServiceProvider
             $this->generateTelegramSessionFolder();
 
             $this->publishes([
-                __DIR__ . '/../config/telegram.php' => config_path('telegram.php')
+                __DIR__ . '/../config/madeline-proto.php' => config_path('madeline-proto.php')
             ]);
         }
     }
@@ -80,8 +80,8 @@ class MadelineProtoServiceProvider extends ServiceProvider
      */
     public function generateTelegramSessionFolder(): void
     {
-        if (!file_exists(storage_path("app/telegram/"))) {
-            mkdir(storage_path("app/telegram"), 0755);
+        if (!file_exists(storage_path("app/madeline-proto/"))) {
+            mkdir(storage_path("app/madeline-proto"), 0755);
         }
     }
 

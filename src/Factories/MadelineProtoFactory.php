@@ -43,7 +43,7 @@ class MadelineProtoFactory
      *
      * @param int|Model $session can be either <b>id</b> or model instance of <b>TelegramSession</b> which
      *                           generated from <u>madeline-proto:multi-session --model</u> command
-     * @param array|null $config if this parameter is null, then the config from <b>telegram.php</b>
+     * @param array|null $config if this parameter is null, then the config from <b>madeline-proto.php</b>
      *                           file will be used
      * @return MadelineProto
      * @throws Exception
@@ -63,7 +63,7 @@ class MadelineProtoFactory
      * Generating MadelineProto (session) instance.
      *
      * @param string $sessionFile
-     * @param array|null $config if this parameter is null, then the config from <b>telegram.php</b>
+     * @param array|null $config if this parameter is null, then the config from <b>madeline-proto.php</b>
      *                           file will be used
      * @return MadelineProto
      * @throws Exception
@@ -71,7 +71,7 @@ class MadelineProtoFactory
     public function make(string $sessionFile, array $config = null): MadelineProto
     {
         if (is_null($config)) {
-            $config = config('telegram.settings');
+            $config = config('madeline-proto.settings');
         }
 
         $settings = new Settings();
@@ -89,7 +89,7 @@ class MadelineProtoFactory
             ->setAppInfo($appInfoSettings)
             ->setLogger($loggingSettings);
 
-        $client = new API(storage_path("app/telegram/$sessionFile"), $settings);
+        $client = new API(storage_path("app/madeline-proto/$sessionFile"), $settings);
 
         return new MadelineProto($client);
     }
