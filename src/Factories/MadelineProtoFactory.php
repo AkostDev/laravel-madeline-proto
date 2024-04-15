@@ -41,20 +41,26 @@ class MadelineProtoFactory
     /**
      * Get the MadelineProto (session) instance from session table.
      *
-     * @param int|Model $session can be either <b>id</b> or model instance of <b>TelegramSession</b> which
+     * @param int|Model $session can be either <b>id</b> or model instance of <b>MadelineProtoSession</b> which
      *                           generated from <u>madeline-proto:multi-session --model</u> command
-     * @param array|null $config if this parameter is null, then the config from <b>madeline-proto.php</b>
+     * @param array $config if this parameter is null, then the config from <b>madeline-proto.php</b>
      *                           file will be used
      * @return MadelineProto
      * @throws Exception
      */
-    public function get(Model|int $session, array $config = null): MadelineProto
+    public function get(Model|int $session, array $config = []): MadelineProto
     {
         if (is_int($session)) {
-            $session = $this->database->table($this->table)->find($session);
+            $session = $this->database->table($this->table)
+                ->find($session);
         }
 
         $sessionFile = $session->session_file;
+
+        $config += [
+            'api_id' => $session->api_id,
+            'api_hash' => $session->api_hash,
+        ];
 
         return $this->make($sessionFile, $config);
     }
@@ -63,28 +69,28 @@ class MadelineProtoFactory
      * Generating MadelineProto (session) instance.
      *
      * @param string $sessionFile
-     * @param array|null $config if this parameter is null, then the config from <b>madeline-proto.php</b>
+     * @param array $config if this parameter is null, then the config from <b>madeline-proto.php</b>
      *                           file will be used
      * @return MadelineProto
      * @throws Exception
      */
-    public function make(string $sessionFile, array $config = null): MadelineProto
+    public function make(string $sessionFile, array $config = []): MadelineProto
     {
-        if (is_null($config)) {
-            $config = config('madeline-proto.settings');
-        }
+        $defaultConfig = config('madeline-proto.settings');
 
-        $settings = new Settings();
+        $apiId = $config['api_id'] ?? $defaultConfig['app_info']['api_id'];
+        $apiHash = $config['api_hash'] ?? $defaultConfig['app_info']['api_hash'];
 
         $appInfoSettings = (new AppInfo())
-            ->setApiId(intval($config['app_info']['api_id']))
-            ->setApiHash($config['app_info']['api_hash']);
+            ->setApiId(intval($apiId))
+            ->setApiHash($apiHash);
 
         $loggingSettings = (new Logger())
-            ->setType($config['logger']['logger'])
-            ->setExtra($config['logger']['logger_param'])
+            ->setType($defaultConfig['logger']['logger'])
+            ->setExtra($defaultConfig['logger']['logger_param'])
             ->setMaxSize(50 * 1024 * 1024);
 
+        $settings = new Settings();
         $settings
             ->setAppInfo($appInfoSettings)
             ->setLogger($loggingSettings);

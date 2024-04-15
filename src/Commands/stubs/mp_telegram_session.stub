@@ -2,25 +2,21 @@
 
 namespace {{package}};
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class TelegramSession.
- *
- * @package {{package}}
- * @mixin Builder
- *
- * @property int id
- * @property int {{user}}_id
- * @property string session_file
+ * @property int $id
+ * @property int ${{user}}_id
+ * @property int $api_id
+ * @property string $api_hash
+ * @property string $session_file
  */
-class TelegramSession extends Model
+class MadelineProtoSession extends Model
 {
-    /**
-     * @inheritdoc
-     */
     protected $fillable = [
-        '{{user}}_id', 'session_file'
+        '{{user}}_id',
+        'session_file',
+        'api_id',
+        'api_hash',
     ];
 }

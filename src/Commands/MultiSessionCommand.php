@@ -40,32 +40,34 @@ class MultiSessionCommand extends Command
      */
     public function handle(): void
     {
-        if ($this->option('model')) {
-            $user = $this->ask('Telegram user model (for relation)', 'App/User');
+        $foreignModel = config('madeline-proto.sessions.multiple.foreign_model', '\App\Models\User');
 
-            if (file_exists(app_path("TelegramSession.php")) && !$this->option('force')) {
-                if (!$this->confirm("The App/TelegramSession model is already exist. Replace it?")) {
+        if ($this->option('model')) {
+            if (file_exists(app_path('Models/MadelineProtoSession.php')) && ! $this->option('force')) {
+                if (! $this->confirm('The App/Models/MadelineProtoSession model is already exist. Replace it?')) {
                     $this->info('Multi session export aborted.');
+
                     return;
                 }
             }
 
-            $this->exportModel($user);
+            $this->exportModel($foreignModel);
 
-            $this->info('TelegramSession model generated.');
+            $this->info('MadelineProtoSession model generated.');
         }
 
-        $tableName = config('telegram.sessions.multiple.table');
+        $tableName = config('madeline-proto.sessions.multiple.table');
         $migration = "2024_04_10_000000_create_{$tableName}_table.php";
 
         if (file_exists(database_path("migrations/$migration")) && !$this->option('force')) {
-            if (!$this->confirm("The {$migration} migration file is already exist. Replace it?")) {
+            if (! $this->confirm("The $migration migration file is already exist. Replace it?")) {
                 $this->info('Multi session export aborted.');
+
                 return;
             }
         }
 
-        $this->exportMigration($tableName, $user ?? null);
+        $this->exportMigration($tableName, $foreignModel);
 
         $this->info('Migration file generated.');
     }
@@ -96,7 +98,7 @@ class MultiSessionCommand extends Command
     public function exportModel(string $relation): void
     {
         file_put_contents(
-            app_path('TelegramSession.php'),
+            app_path('Models/MadelineProtoSession.php'),
             $this->compileModelStub($relation)
         );
     }
@@ -113,7 +115,7 @@ class MultiSessionCommand extends Command
 
         return str_replace(
             ['{{user}}', '{{package}}'],
-            [Str::snake(class_basename($user)), 'App'],
+            [Str::snake(class_basename($user)), 'App\Models'],
             $stub
         );
     }
@@ -122,14 +124,16 @@ class MultiSessionCommand extends Command
      * Compile the TelegramSession migration stub.
      *
      * @param string $tableName
-     * @param string $user
+     * @param string $foreignModel
      * @return string
      */
-    public function compileMigrationStub(string $tableName, string $user): string
+    public function compileMigrationStub(string $tableName, string $foreignModel): string
     {
+        $foreignColumn = config('madeline-proto.sessions.multiple.foreign_column', 'user_id');
+
         return str_replace(
-            ['{{table}}', '{{user}}'],
-            [$tableName, Str::snake(class_basename($user))],
+            ['{{table}}', '{{model}}', '{{column}}'],
+            [$tableName, "$foreignModel::class", $foreignColumn],
             file_get_contents(__DIR__ . '/stubs/migration.stub')
         );
     }

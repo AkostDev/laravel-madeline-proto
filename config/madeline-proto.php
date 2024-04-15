@@ -22,7 +22,9 @@ return [
             'session_file' => env('MP_SESSION_FILE', 'session.madeline'),
         ],
         'multiple' => [
-            'table' => 'madeline_proto_sessions'
+            'table' => 'madeline_proto_sessions',
+            'foreign_model' => App\Models\User::class,
+            'foreign_column' => 'user_id',
         ],
     ],
 
