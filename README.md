@@ -13,7 +13,7 @@ Add the laravel-madeline-proto to the project dependency:
 composer require akostdev/laravel-madeline-proto
 ```
 
-Then publish the `telegram.php` config file:
+Then publish the `madeline-proto.php` config file:
 
 ```shell script
 php artisan vendor:publish --provider="AkostDev\LaravelMadelineProto\MadelineProtoServiceProvider"
