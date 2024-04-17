@@ -20,6 +20,8 @@ return new class extends Migration
                 ->constrained()
                 ->nullOnDelete();
             $table->string('session_file');
+            $table->boolean('is_active')
+                ->default(false);
             $table->unsignedBigInteger('api_id')
                 ->nullable();
             $table->string('api_hash')

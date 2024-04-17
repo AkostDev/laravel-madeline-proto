@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $api_id
  * @property string $api_hash
  * @property string $session_file
+ * @property boolean $is_active
  */
 class MadelineProtoSession extends Model
 {
@@ -18,5 +19,10 @@ class MadelineProtoSession extends Model
         'session_file',
         'api_id',
         'api_hash',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean'
     ];
 }
