@@ -30,7 +30,6 @@
             ]
         }
     },
-    "minimum-stability": "beta",
     "config": {
         "allow-plugins": {
             "symfony/thanks": false
