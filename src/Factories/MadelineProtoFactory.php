@@ -2,8 +2,8 @@
 
 namespace AkostDev\LaravelMadelineProto\Factories;
 
-use danog\MadelineProto\API;
 use AkostDev\LaravelMadelineProto\MadelineProto;
+use danog\MadelineProto\API;
 use danog\MadelineProto\Exception;
 use danog\MadelineProto\Settings;
 use danog\MadelineProto\Settings\AppInfo;
